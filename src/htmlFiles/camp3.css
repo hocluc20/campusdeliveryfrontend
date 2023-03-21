@@ -1,14 +1,12 @@
 body {
     background-color: #2c2c2c;
     color: #FFB043;
+    margin-top: 100px;
+    width: 100%;
 }
 
 .submit {
     background-color: #FFB043;
-}
-
-body {
-    margin-top: 100px;
 }
 
 #logoStartPage {
@@ -18,11 +16,10 @@ body {
     align-items: center;
     justify-content: center;
 }
-/*helloo*/
 footer {
     padding-top: 50px;
     height: 130px;
-    margin-top: 8.5%;
+    margin-top: 10.5%;
     background-color: #FFB043;
     color: #2c2c2c;
     text-align: center;
@@ -182,7 +179,7 @@ button:hover .star-6 {
 }
 
 .container {
-    border: solid #FFB043;
+    /*border: solid #FFB043;*/
     margin-top: 50px;
     width: 450px;
     position: relative;
@@ -295,13 +292,24 @@ form button:active {
     text-decoration: underline;
 }
 
-@media screen and (max-width: 600px) {
-    #logoStartPage {
-        visibility: hidden;
+@media screen and (max-width: 450px) {
+    .left, .main, .right {
+        width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
     }
-
     body{
-        margin-top: -300px;
+        width: 100%;
+        text-align: center;
+    }
+    #logoStartPage {
+        width: 100%;
+        visibility: visible;
+        text-align: center;
+
+    }
+    img{
+        width: 300px;
+        height: auto;
+        text-align: center;
     }
     footer{
         visibility: hidden;
