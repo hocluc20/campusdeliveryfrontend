@@ -10,7 +10,6 @@ export default function Login() {
         alert(passw)
     }
 
-
     function handleinputsRegistration(){
         var usernameReg = document.getElementById("benutzerReg").value;
         var passwReg = document.getElementById("passwReg").value;
