@@ -1,6 +1,6 @@
 // @ts-ignore
-import React, {useState} from "react";
-import "./everything.css";
+import React, {useEffect, useState} from "react";
+import "./order.css";
 
 interface Order {
     id: number;
@@ -10,17 +10,18 @@ interface Order {
     notes: string;
 }
 
-const getTodo = (url:string): Promise<Order[]> =>{
-    return fetch(url)
-        .then(response => response.json() as Promise<Order[]>);
-}
-
-//Post wenn etwas "ja" oder "nein" geklickt wurde. Status wird mitgeschickt.
-//Für den Preis -> get mit der Summe
+const getTodo = (url: string): Promise<Order[]> => {
+    return fetch(url).then((response) => response.json() as Promise<Order[]>);
+};
 
 const OrderList: React.FC = () => {
-    // const [orders, setOrders] = useState<Order[]>([]);
-    const [orders, setOrders] = useState<Order[]|undefined>(undefined);
+    const [orders, setOrders] = useState<Order[]>([]);
+
+    useEffect(() => {
+        getTodo("https://example.com/orders").then((data) => {
+            setOrders(data);
+        });
+    }, [getTodo]);
 
     const handleAccept = (orderId: number) => {
         // Logic for accepting the order
@@ -36,8 +37,8 @@ const OrderList: React.FC = () => {
         <div>
             <h1>Bestellungen</h1>
             <ul className="noBullet">
-                {orders!.map((order) => (
-                    <li className="listItem" key={order.id} >
+                {orders.map((order) => (
+                    <li className="listItem" key={order.id}>
                         <div>
                             <strong>Name:</strong> {order.name}
                         </div>
