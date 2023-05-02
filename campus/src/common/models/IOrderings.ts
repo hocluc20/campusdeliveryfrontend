@@ -9,6 +9,5 @@ export interface IOrderings{
     shop:string,
     deliveryDate:string,
     deliveryTime:string
-
 }
 
