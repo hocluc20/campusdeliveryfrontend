@@ -1,21 +1,27 @@
 // @ts-ignore
 import React, {useEffect, useState} from "react";
 import "./order.css";
+import {IContactDetails} from "../../common/models/IContactDetails";
+import {IOrderings} from "../../common/models/IOrderings";
 
-interface Order {
-    id: number;
-    name: string;
-    price: number;
-    products: string[];
-    notes: string;
-}
+// interface Order {
+//     id: number;
+//     name: string;
+//     price: number;
+//     products: string[];
+//     notes: string;
+// }
 
-const getTodo = (url: string): Promise<Order[]> => {
-    return fetch(url).then((response) => response.json() as Promise<Order[]>);
+const getTodo = (url: string): Promise<IOrderings[]> => {
+    return fetch(url).then((response) => response.json() as Promise<IOrderings[]>);
+};
+
+const getName = (url: string): Promise<IContactDetails[]> => {
+    return fetch(url).then((response) => response.json() as Promise<IContactDetails[]>);
 };
 
 const OrderList: React.FC = () => {
-    const [orders, setOrders] = useState<Order[]>([]);
+    const [orders, setOrders] = useState<IOrderings[]>([]);
 
     useEffect(() => {
         getTodo("https://example.com/orders").then((data) => {
@@ -40,16 +46,22 @@ const OrderList: React.FC = () => {
                 {orders.map((order) => (
                     <li className="listItem" key={order.id}>
                         <div>
-                            <strong>Name:</strong> {order.name}
+                            <strong>Name:</strong> {getName("/"+order.userID)[Symbol.toStringTag]}
+                        </div>
+                        <div>
+                            <strong>Shop:</strong> {order.shop}
                         </div>
                         <div>
                             <strong>Preis insgesamt:</strong> ${order.price}
                         </div>
                         <div>
-                            <strong>Produkte:</strong>{" "}
-                            {order.products.map((product, index) => (
-                                <span key={index}>{product} </span>
-                            ))}
+                            <strong>Date:</strong> {order.deliveryDate}
+                        </div>
+                        <div>
+                            <strong>Time:</strong> {order.deliveryTime}
+                        </div>
+                        <div>
+                            <strong>Produkte:</strong>${order.product}
                         </div>
                         <div>
                             <strong>Notes:</strong> {order.notes}

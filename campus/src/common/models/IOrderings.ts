@@ -8,6 +8,7 @@ export interface IOrderings{
     currentStatus:string,
     shop:string,
     deliveryDate:string,
-    deliveryTime:string
+    deliveryTime:string,
+    notes:string
 }
 
