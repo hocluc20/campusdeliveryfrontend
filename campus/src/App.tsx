@@ -23,6 +23,4 @@ function App() {
   );
 }
 
-//contais app component
-
 export default App;
