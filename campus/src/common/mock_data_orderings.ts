@@ -1,4 +1,5 @@
 import {IOrderings} from "./models/IOrderings";
+import {IDelivery} from "./models/IDelivery";
 
 export const mock_oderings : IOrderings[] = [
     {
@@ -12,6 +13,7 @@ export const mock_oderings : IOrderings[] = [
         shop: "Spar",
         deliveryDate: "14.04.2023",
         deliveryTime: "13:10:12",
+        notes: "sugarfree"
     },
     {
         id: 2,
@@ -23,7 +25,8 @@ export const mock_oderings : IOrderings[] = [
         currentStatus: "waiting",
         shop: "McDonalds",
         deliveryDate: "15.04.2023",
-        deliveryTime: "11:10:00"
+        deliveryTime: "11:10:00",
+        notes: "with sour cream sauce"
     },
     {
         id: 3,
@@ -35,8 +38,15 @@ export const mock_oderings : IOrderings[] = [
         currentStatus: "waiting",
         shop: "Billa",
         deliveryDate: "15.05.2023",
-        deliveryTime: "13:45:00"
-    },
+        deliveryTime: "13:45:00",
+        notes: "mit guadm dressing"
+    }
 ]
 
-//export const mock_delivery
+export const mock_delivery : IDelivery = {
+        id: 1,
+        userID: 2,
+        shop: "McDonalds",
+        deliveryDate: "13.12.2002",
+        deliveryTime: "12:13:12"
+}
