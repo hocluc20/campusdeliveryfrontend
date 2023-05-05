@@ -11,7 +11,7 @@ export const mock_oderings : IOrderings[] = [
         currentStatus: "waiting",
         shop: "Spar",
         deliveryDate: "14.04.2023",
-        deliveryTime: "13:10:12"
+        deliveryTime: "13:10:12",
     },
     {
         id: 2,
@@ -36,7 +36,7 @@ export const mock_oderings : IOrderings[] = [
         shop: "Billa",
         deliveryDate: "15.05.2023",
         deliveryTime: "13:45:00"
-    }
+    },
 ]
 
 //export const mock_delivery
