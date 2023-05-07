@@ -1,5 +1,7 @@
 import {IOrderings} from "./models/IOrderings";
 import {IDelivery} from "./models/IDelivery";
+import {INewDelivery} from "./models/INewDelivery";
+import {IUserRegister} from "./models/IUserRegister";
 
 export const mock_oderings : IOrderings[] = [
     {
@@ -43,10 +45,37 @@ export const mock_oderings : IOrderings[] = [
     }
 ]
 
-export const mock_delivery : IDelivery = {
-        id: 1,
+export const mock_delivery : IDelivery[] = [
+    {
+    id: 1,
         userID: 2,
-        shop: "McDonalds",
-        deliveryDate: "13.12.2002",
-        deliveryTime: "12:13:12"
+    shop: "McDonalds",
+    deliveryDate: "13.12.2002",
+    deliveryTime: "12:13:12"
+    },
+
+    {
+        id: 2,
+        userID: 3,
+        shop: "Spar",
+        deliveryDate: "11.04.2023",
+        deliveryTime: "13:15:00"
+    }
+
+]
+
+export const mock_newDelivery : INewDelivery = {
+    userID: 2,
+    shop: "Spar",
+    deliveryTime: "13.12.200213:15:00"
+
+}
+
+export const mock_user: IUserRegister = {
+    username: "bauemc20",
+    email: "bauemc20@htl-kaindorf.at",
+    userpassword: "4ade80",
+    firstname: "Emma",
+    lastname: "Bauer",
+    klasse: "3CHIF"
 }
