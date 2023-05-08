@@ -16,7 +16,7 @@ const DeliveryAddinng:React.FC<DeliveryAddingProps> = ({newDelivery}) => {
             <label>Geschäft</label>
             <select>z.B. Billa</select>
 
-            <button name={"postButton"}>Posten</button>
+            <button name={"postButton"}>Submit</button>
         </div>
     );
 };
