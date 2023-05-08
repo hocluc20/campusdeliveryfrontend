@@ -8,6 +8,7 @@ import Registration from "./components/Loginpage/Registration";
 import LoggedUserField from "./components/Homepage/LoggedUserField";
 import Delivery from "./components/Homepage/Delivery";
 import Homepage from "./components/Homepage/Homepage";
+import Order from "./components/lukas/Order";
 
 function App() {
 
@@ -19,7 +20,8 @@ function App() {
                 <Route path={"/"} element={<Login/>}/>
                 <Route path={"/registration"} element={<Registration/>}/>
                 <Route path={"/login"} element={<Login/>}/>
-                <Route path={"/homepage"} element={<h1><Homepage/></h1>}/>
+                <Route path={"/homepage"} element={<Homepage/>}/>
+                <Route path={"/ownerpage"} element={<Order/>}/>
 
             </Routes>
         </BrowserRouter>
