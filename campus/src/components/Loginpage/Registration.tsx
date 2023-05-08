@@ -2,6 +2,7 @@ import React, {FormEvent} from 'react';
 import {Link, Outlet} from "react-router-dom";
 import {IUserRegister} from "../../common/models/IUserRegister";
 import axios from "axios";
+import "./loginCSS.css"
 
 
 const Registration = () => {
@@ -27,49 +28,50 @@ const Registration = () => {
                     console.log("CREATED")
                 }else if(error == 406){
                     console.log("ERROR ")
+                }else if(error == 405){
+                    console.log("Email or username already exist")
                 }
             });
     }
 
     return (
-        <div className="LoginForm">
-            <form onSubmit={handleSubmit}>
-                <div className="input-group">
-                    <h1>Registrierung</h1>
-                    <label htmlFor="tfUsername"></label>
+        <div className="wrapper">
+            <div className="text-center mt-4 name">Registration</div>
+            <form onSubmit={handleSubmit} className="p-3 mt-3">
+                <div className="form-field d-flex align-items-center">
+                    <label className="far fa-user" htmlFor="tfUsername"></label>
                     <input type="text" id="username" placeholder={"Benutzername"} />
                 </div>
-                <div className="input-group">
+                <div className="form-field d-flex align-items-center">
                     <label htmlFor="tfFirstname"></label>
                     <input type="text" id="firstname" placeholder={"Vorname"} />
                 </div>
-                <div className="input-group">
+                <div className="form-field d-flex align-items-center">
                     <label htmlFor="tfLastname"></label>
                     <input type="text" id="lastname" placeholder={"Nachname"} />
                 </div>
-                <div className="input-group">
+                <div className="form-field d-flex align-items-center">
                     <label htmlFor="tfClass"></label>
                     <input type="text" id="klasse" placeholder={"Jahrgang"} />
                 </div>
-                <div className="input-group">
+                <div className="form-field d-flex align-items-center">
                     <label htmlFor="tfEMail"></label>
                     <input type="text" id="email" placeholder={"E-Mail"} />
                 </div>
-                <div className="input-group">
+                <div className="form-field d-flex align-items-center">
                     <label htmlFor="tfPassword"></label>
                     <input type="password" id="password" placeholder={"Password"}/>
                 </div>
 
-                <Link to={"/login"}>
-                    <button type="submit" className="login-button">Registrieren</button>
+                <Link to={"/login"} className="text-center fs-6">
+                    <button type="submit" className="btn mt-3">Registrieren</button>
                 </Link>
-
 
 
             </form>
 
 
-
+        <Outlet/>
 
 
         </div>
