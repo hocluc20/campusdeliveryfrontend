@@ -7,7 +7,7 @@ import {IDelivery} from "../../common/models/IDelivery";
 
 
 const getTodo = (url: string): Promise<IOrderings[]> => {
-    return fetch(url).then((response) => response.json() as Promise<IOrderings[]>);
+    return (fetch(url).then(response => response.json() as Promise<IOrderings[]>));
 };
 
 const getName = (url: string): Promise<IOrderings[]> => {
@@ -18,9 +18,9 @@ const OrderList: React.FC = () => {
     const [orders, setOrders] = useState<IOrderings[]>([]);
     let id = 1;
     useEffect(() => {
-        getTodo('https://b6d52a5b-3f46-4df1-aea9-b9810af84307.mock.pstmn.io/getIt').then((data) => {
+        getTodo('https://3784655d-5298-453e-84fd-bb8ee202002a.mock.pstmn.io/getAllDel').then((data) => {
             setOrders(data);
-            console.log(data);
+            console.log(data[0].userID);
         }).catch(e => console.log(e));
     }, []);
 
@@ -39,7 +39,7 @@ const OrderList: React.FC = () => {
             <div>
                 <h1>Bestellungen</h1>
                 <ul className="noBullet">
-                    <h3>{orders.length}</h3>
+                    <h3>Es sind {orders.length} Bestellungen vorhanden!</h3>
                     {orders.map((order) => {
                             return (
                                 <li className="listItem" key={order.id}>
@@ -47,22 +47,25 @@ const OrderList: React.FC = () => {
                                         {/*<strong>Name:</strong> {getName("/"+order.userID)[Symbol.toStringTag]}*/}
                                     </div>
                                     <div>
-                                        <strong>Shop:</strong> {order.shop}
+                                        <strong>Geschäft: </strong> {order.shop}
                                     </div>
                                     <div>
-                                        <strong>Preis insgesamt:</strong> {order.price}
+                                        <strong>Preis insgesamt: </strong> {order.price}
                                     </div>
                                     <div>
-                                        <strong>Date:</strong> {order.deliveryDate}
+                                        <strong>Anzahl: </strong> {order.quantity}
                                     </div>
                                     <div>
-                                        <strong>Time:</strong> {order.deliveryTime}
+                                        <strong>Datum: </strong> {order.deliveryDate}
                                     </div>
                                     <div>
-                                        <strong>Produkte:</strong>{order.product}
+                                        <strong>Zeit: </strong> {order.deliveryTime}
                                     </div>
                                     <div>
-                                        <strong>Notes:</strong> {order.notes}
+                                        <strong>Produkt: </strong>{order.product}
+                                    </div>
+                                    <div>
+                                        <strong>Notizen: </strong> {order.notes}
                                     </div>
                                     <div>
                                         <button onClick={() => handleAccept(order.id)}>Akzeptieren</button>
@@ -72,7 +75,6 @@ const OrderList: React.FC = () => {
                             )
                         }
                     )}
-                    <h3>asdjhfkj</h3>
                 </ul>
             </div>
         </>
