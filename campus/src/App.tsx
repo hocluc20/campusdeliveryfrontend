@@ -9,6 +9,9 @@ import LoggedUserField from "./components/Homepage/LoggedUserField";
 import Delivery from "./components/Homepage/Delivery";
 import Homepage from "./components/Homepage/Homepage";
 import Order from "./components/lukas/Order";
+import {mock_user} from "./common/mock_data_orderings";
+import {mock_data_userReply} from "./common/moch_data_user";
+
 
 function App() {
 
@@ -20,7 +23,7 @@ function App() {
                 <Route path={"/"} element={<Login/>}/>
                 <Route path={"/registration"} element={<Registration/>}/>
                 <Route path={"/login"} element={<Login/>}/>
-                <Route path={"/homepage"} element={<Homepage/>}/>
+                <Route path={"/homepage"} element={<Homepage currentUser={mock_data_userReply[0]}/>}/>
                 <Route path={"/ownerpage"} element={<Order/>}/>
 
             </Routes>
