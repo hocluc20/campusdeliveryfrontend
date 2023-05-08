@@ -6,7 +6,15 @@ import axios from "axios";
 import {IUserReplyLogin} from "../../common/models/IUserReplyLogin";
 import "./loginCSS.css"
 
-const Login = () => {
+interface LoginProps {
+    currentuser:IUserReplyLogin;
+    setcurrentuser:(user:IUserReplyLogin) => void;
+
+}
+
+
+const Login = ({currentuser, setcurrentuser}:LoginProps) => {
+
 
     const handleSumit=(e:FormEvent<HTMLFormElement>) =>{
         e.preventDefault();
@@ -30,6 +38,9 @@ const Login = () => {
                     numberOfDeliveries:response.data.numberOfDeliveries,
                     klasse:response.data.klasse,
                 }
+
+                setcurrentuser(userLoginBack);
+
                 console.log(JSON.stringify(userLoginBack));
             })
             .catch(error => {
