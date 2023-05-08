@@ -1,6 +1,8 @@
 import React, {FormEvent} from 'react';
 import {Link, Outlet} from "react-router-dom";
 import {IUserRegister} from "../../common/models/IUserRegister";
+import axios from "axios";
+
 
 const Registration = () => {
 
@@ -19,7 +21,16 @@ const Registration = () => {
         }
         console.log(JSON.stringify(newUser));
 
+        axios.post("/user/register",JSON.stringify(newUser))
+            .catch(error => {
+                if(error == 201){
+                    console.log("CREATED")
+                }else if(error == 406){
+                    console.log("ERROR ")
+                }
+            });
     }
+
     return (
         <div className="LoginForm">
             <form onSubmit={handleSubmit}>
@@ -48,10 +59,18 @@ const Registration = () => {
                     <label htmlFor="tfPassword"></label>
                     <input type="password" id="password" placeholder={"Password"}/>
                 </div>
-                <button type="submit" className="login-button">Registrieren</button>
+
+                <Link to={"/login"}>
+                    <button type="submit" className="login-button">Registrieren</button>
+                </Link>
+
 
 
             </form>
+
+
+
+
 
         </div>
     );
