@@ -10,6 +10,7 @@ import Delivery from "./components/Homepage/Delivery";
 import Homepage from "./components/Homepage/Homepage";
 import {IUserReplyLogin} from "./common/models/IUserReplyLogin";
 import {useState} from "react";
+import Order from "./components/lukas/Order";
 
 
 function App() {
@@ -33,7 +34,8 @@ function App() {
                 <Route path={"/"} element={<Login currentuser={currentuser} setcurrentuser={setCurrentuser}/>}/>
                 <Route path={"/registration"} element={<Registration/>}/>
                 <Route path={"/login"} element={<Login currentuser={currentuser} setcurrentuser={setCurrentuser}/>}/>
-                <Route path={"/homepage"} element={<Homepage/>}/>
+                {/*<Route path={"/homepage"} element={<Homepage/>}/>*/}
+                <Route path={"/ownerpage"} element={<Order/>}/>
             </Routes>
         </BrowserRouter>
     </div>
