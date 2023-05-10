@@ -5,7 +5,6 @@ import './App.css';
 import Login from "./components/Loginpage/Login";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Registration from "./components/Loginpage/Registration";
-import LoggedUserField from "./components/Homepage/LoggedUserField";
 import Delivery from "./components/Homepage/Delivery";
 import Homepage from "./components/Homepage/Homepage";
 import {IUserReplyLogin} from "./common/models/IUserReplyLogin";
@@ -34,7 +33,7 @@ function App() {
                 <Route path={"/"} element={<Login currentuser={currentuser} setcurrentuser={setCurrentuser}/>}/>
                 <Route path={"/registration"} element={<Registration/>}/>
                 <Route path={"/login"} element={<Login currentuser={currentuser} setcurrentuser={setCurrentuser}/>}/>
-                {/*<Route path={"/homepage"} element={<Homepage/>}/>*/}
+                <Route path={"/homepage"} element={<Homepage currentUser={currentuser}/>}/>
                 <Route path={"/ownerpage"} element={<Order/>}/>
             </Routes>
         </BrowserRouter>
