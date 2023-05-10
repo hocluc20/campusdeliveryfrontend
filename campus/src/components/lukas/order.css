@@ -1,10 +1,148 @@
 .listItem {
-    border: 1px solid black;
+    border: 1px solid #FFB043;
     padding: 10px;
-    width: 300px;
+    width: 500px;
+    /*text-align: center;*/
+    align-items: center;
+    box-shadow: 5px 5px 10px #FFB043,
+    -5px -5px 10px #FFB043;
+    border-radius: 20px;
+}
+
+.listItemDeclined {
+    border: 1px solid #FFB043;
+    padding: 10px;
+    width: 500px;
     margin-top: 30px;
+    /*text-align: center;*/
+    align-items: center;
+    box-shadow: 5px 5px 10px red,
+    -5px -5px 10px red;
+    border-radius: 20px;
+}
+
+.listItemWaiting {
+    border: 1px solid #FFB043;
+    padding: 10px;
+    width: 500px;
+    margin-top: 20%;
+    align-items: center;
+    box-shadow: 5px 5px 10px #FFB043,
+    -5px -5px 10px #FFB043;
+    border-radius: 20px;
+}
+
+.listItemAccepted {
+    border: 1px solid #FFB043;
+    padding: 10px;
+    width: 500px;
+    margin-top: 20%;
+    align-items: center;
+    box-shadow: 5px 5px 10px green,
+    -5px -5px 10px green;
+    border-radius: 20px;
+}
+
+
+.listItem:hover {
+    width: 600px;
+    box-shadow: 5px 5px 10px #FFFFFF,
+    -5px -5px 10px #FFFFFF;
+    border-radius: 20px;
+}
+.oneList:hover{
+    width: 400px;
+    height: 300px;
+}
+
+.userName{
+    width: 500px;
+    color: #2C2C2C;
+    text-align: right;
+    position: fixed;
+    margin-left: 30%;
+    margin-top: 20px;
+}
+
+.userName :hover{
+    background-color: #2C2C2C;
+    color: #FFB043;
+    border-color: #FFB043;
+    /*letter-spacing: 5px;*/
+    box-shadow: #FFB043 0px 7px 29px 0px;
+}
+
+.allOrders{
+    align-items: center;
+    justify-content: center;
 }
 
 .noBullet {
     list-style-type: none;
 }
+
+.sumOfOrders{
+    text-align: right;
+    position: fixed;
+    margin-top: 20%;
+    margin-left: 20px;
+}
+
+
+button {
+    padding: 10px 15px;
+    border-radius: 50px;
+    border: 0;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all .5s ease;
+    font-family: Calibri;
+}
+
+button:hover {
+    letter-spacing: 3px;
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: #FFB043 0px 7px 29px 0px;
+}
+
+.okayButton{
+    padding: 10px 15px;
+    border-radius: 50px;
+    border: 0;
+    background-color: #FFB043;
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 20px;
+    transition: all .5s ease;
+    font-family: Calibri;
+    text-align: right;
+    position: fixed;
+    margin-top: 20%;
+    margin-left: 350px;
+}
+.okayButton:hover {
+    letter-spacing: 3px;
+    background-color: #2C2C2C;
+    color: hsl(0, 0%, 100%);
+    box-shadow: #FFB043 0px 7px 29px 0px;
+}
+
+button:active {
+    letter-spacing: 3px;
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
+}
+.break {
+    flex-basis: 100%;
+    height: 0;
+}
+
+
