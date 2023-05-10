@@ -23,12 +23,13 @@ const DeliveryAdding:React.FC<DeliveryAddingProps> = ({addNewDelivery, currentUs
         <div>
             <form onSubmit={e => submitNewDelivery(e)}>
                 <label>Geschäft</label>
-                <select id={"shopLabelId"} name={"shopLabel"}>z.B. Billa</select>
+                <select id={"shopLabelId"} name={"shopLabel"} defaultValue={"Billa"} >z.B. Billa</select>
 
                 <label>Abholzeit</label>
-                <select>z.B. Billa</select>
+                <select defaultValue={"12:45:00"}>z.B. Billa</select>
 
-                <button type={"submit"} name={"submitNewDeliveryButton"}>Submit</button>
+
+                <button type={"submit"} name={"submitNewDeliveryButton"} >Submit</button>
             </form>
 
         </div>
