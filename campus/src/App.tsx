@@ -16,13 +16,13 @@ function App() {
 
     const [currentuser,setCurrentuser] = useState<IUserReplyLogin>({
         id:1,
-        username:"",
-        email:"",
-        userpassword:"",
-        firstname:"",
-        lastname:"",
-        numberOfDeliveries:0,
-        klasse:"",
+        username:"seli",
+        email:"sadf",
+        userpassword:"sadf",
+        firstname:"asdf",
+        lastname:"sdf",
+        numberOfDeliveries:1,
+        klasse:"chif20",
     });
 
     return (
