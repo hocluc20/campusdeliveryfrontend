@@ -1,20 +1,17 @@
-import React, {FormEvent, useState} from 'react';
+import React, {FormEvent, useContext, useState} from 'react';
 import {Link, Outlet} from "react-router-dom";
 import Registration from "./Registration";
 import {IUserLogin} from "../../common/models/IUserLogin";
 import axios from "axios";
 import {IUserReplyLogin} from "../../common/models/IUserReplyLogin";
 import "./loginCSS.css"
-
-interface LoginProps {
-    currentuser:IUserReplyLogin;
-    setcurrentuser:(user:IUserReplyLogin) => void;
-
-}
+import {CurrentUserContext, ICurrentUserContextValue} from "../../common/contexts/ICurrentUserContextValue";
 
 
-const Login = ({currentuser, setcurrentuser}:LoginProps) => {
-    // console.log(currentuser);
+const Login = () => {
+    const contextUser: ICurrentUserContextValue = useContext(CurrentUserContext);
+    const {currentUser, setCurrentUser} = contextUser;
+    // console.log(contextUser);
 
 
     const handleSumit=(e:FormEvent<HTMLFormElement>) =>{
@@ -40,7 +37,7 @@ const Login = ({currentuser, setcurrentuser}:LoginProps) => {
                     klasse:response.data.klasse,
                 }
 
-                setcurrentuser(userLoginBack);
+                setCurrentUser(userLoginBack);
 
                 console.log(JSON.stringify(userLoginBack));
             })
