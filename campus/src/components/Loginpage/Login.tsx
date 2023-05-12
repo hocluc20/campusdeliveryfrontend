@@ -10,7 +10,7 @@ import {CurrentUserContext, ICurrentUserContextValue} from "../../common/context
 
 const Login = () => {
     const contextUser: ICurrentUserContextValue = useContext(CurrentUserContext);
-    const {currentUser, setCurrentUser} = contextUser;
+    // const [currentUser, setCurrentUser] = contextUser;
     // console.log(contextUser);
 
 
@@ -37,7 +37,9 @@ const Login = () => {
                     klasse:response.data.klasse,
                 }
 
-                setCurrentUser(userLoginBack);
+                if (contextUser.setCurrentUser) {
+                    contextUser.setCurrentUser(userLoginBack);
+                }
 
                 console.log(JSON.stringify(userLoginBack));
             })

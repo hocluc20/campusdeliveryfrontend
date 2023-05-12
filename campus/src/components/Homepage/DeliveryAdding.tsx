@@ -1,14 +1,14 @@
-import React, {FormEvent, useState} from 'react';
+import React, {FormEvent, useContext, useState} from 'react';
 import {INewDelivery} from "../../common/models/INewDelivery";
 import {IUserReplyLogin} from "../../common/models/IUserReplyLogin";
 import {fireChangeForInputTimeIfValid} from "@testing-library/user-event/dist/keyboard/shared";
 import axios from "axios";
 import {mock_data_shops} from "../../common/mock_data_shop";
 import {IShop} from "../../common/models/IShop";
+import {CurrentUserContext, ICurrentUserContextValue} from "../../common/contexts/ICurrentUserContextValue";
 
 interface DeliveryAddingProps{
     newDelivery: INewDelivery
-    currentUser: IUserReplyLogin
     addNewDelivery: (newDelivery:INewDelivery) => void
 }
 
@@ -16,8 +16,10 @@ interface DeliveryAddingProps{
 //     axios.get("");
 // }
 
-const DeliveryAdding:React.FC<DeliveryAddingProps> = ({addNewDelivery, currentUser}) => {
+const DeliveryAdding:React.FC<DeliveryAddingProps> = ({addNewDelivery}) => {
      const [shopList, setShopList] = useState<IShop[]>(mock_data_shops/*getShops()*/);
+    const currentUser: ICurrentUserContextValue = useContext(CurrentUserContext);
+
 
     // const submitNewDelivery = (e:FormEvent<HTMLFormElement>) => {
     //     e.preventDefault();
@@ -36,7 +38,7 @@ const DeliveryAdding:React.FC<DeliveryAddingProps> = ({addNewDelivery, currentUs
         e.preventDefault();
 
         const newDelivery: INewDelivery = {
-            userID: currentUser.id,
+            userID: currentUser.currentUser.id,
             shop: e.currentTarget.shopLabel.value,
             deliveryTime: e.currentTarget.deliveryTime.value
         };

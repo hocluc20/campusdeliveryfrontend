@@ -76,8 +76,7 @@ const Homepage:React.FC<HomepageProps>  = () => {
     return (
         <div>
             <div className={"userName"}><LoggedUserField/></div>
-            {/*<div className={"userName"}><LoggedUserField user={currentUser}/></div>*/}
-            {/*<DeliveryAdding newDelivery={mock_newDelivery} addNewDelivery={(newDelivery) =>addNewDelivery(newDelivery)}/>*/}
+            <DeliveryAdding newDelivery={mock_newDelivery} addNewDelivery={(newDelivery) =>addNewDelivery(newDelivery)}/>
             {/*<DeliveryAdding newDelivery={mock_newDelivery} currentUser={currentUser} addNewDelivery={addNewDelivery}/>*/}
             <DeliveryList deliveries={deliveries}/>
         </div>

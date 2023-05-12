@@ -16,27 +16,30 @@ import {CurrentUserContext, ICurrentUserContextValue} from '../src/common/contex
 
 function App() {
 
-    const [currentuser,setCurrentuser] = useState<IUserReplyLogin>({
-        id:1,
+    let [currentuser,setCurrentuser] = useState<IUserReplyLogin>({    id:1,
         username:"seli",
         email:"edesec20@htl-kaindorf.at",
         userpassword:"pauliii",
         firstname:"selina",
         lastname:"edelsbrunner",
         numberOfDeliveries:5,
-        klasse:"chif20",
-    });
+        klasse:"chif20",});
+
+    const setCurrentUser = (cu: IUserReplyLogin) => {
+        currentuser = cu;
+    }
+
 
     return (
     <div className="App">
-        <CurrentUserContext.Provider value={{currentUser: currentuser}}>
+        <CurrentUserContext.Provider value={{currentUser: currentuser, setCurrentUser: setCurrentuser}}>
 
 
         <BrowserRouter>
             <Routes>
-                <Route path={"/"} element={<Login currentuser={currentuser} setcurrentuser={setCurrentuser}/>}/>
+                <Route path={"/"} element={<Login/>}/>
                 <Route path={"/registration"} element={<Registration/>}/>
-                <Route path={"/login"} element={<Login currentuser={currentuser} setcurrentuser={setCurrentuser}/>}/>
+                <Route path={"/login"} element={<Login/>}/>
                 <Route path={"/homepage"} element={<Homepage/>}/>
                 <Route path={"/ownerpage"} element={<Order />}/>
             </Routes>
