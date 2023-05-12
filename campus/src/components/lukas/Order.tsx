@@ -186,10 +186,10 @@ const OrderList: React.FC = () => {
                                                         <strong>Notizen: </strong> {order.notes}
                                                     </div>
                                                     <div>
-                                                        <button className={"slideButton"}
-                                                                style={{margin: 5, backgroundColor: "#FFB043"}}
-                                                                onClick={() => handleWaiting(order.id)}>Warten
-                                                        </button>
+                                                        {/*<button className={"slideButton"}*/}
+                                                        {/*        style={{margin: 5, backgroundColor: "#FFB043"}}*/}
+                                                        {/*        onClick={() => handleWaiting(order.id)}>Warten*/}
+                                                        {/*</button>*/}
                                                         <button className={"slideButton"}
                                                                 style={{margin: 5, backgroundColor: "green"}}
                                                                 onClick={() => handleAccept(order.id)}>Akzeptieren
@@ -225,10 +225,10 @@ const OrderList: React.FC = () => {
                                                         <strong>Notizen: </strong> {order.notes}
                                                     </div>
                                                     <div>
-                                                        <button className={"slideButton"}
-                                                                style={{margin: 5, backgroundColor: "#FFB043"}}
-                                                                onClick={() => handleWaiting(order.id)}>Warten
-                                                        </button>
+                                                        {/*<button className={"slideButton"}*/}
+                                                        {/*        style={{margin: 5, backgroundColor: "#FFB043"}}*/}
+                                                        {/*        onClick={() => handleWaiting(order.id)}>Warten*/}
+                                                        {/*</button>*/}
                                                         <button className={"slideButton"}
                                                                 style={{margin: 5, backgroundColor: "red"}}
                                                                 onClick={() => handleDeclined(order.id)}>Verwerfen
@@ -288,8 +288,8 @@ const OrderList: React.FC = () => {
             <button type="button" className={"slideButton"} onClick={scrollTotalRight}>ende rechts</button>
             <h1 className={"sumOfOrders"}>Summer aller bestätigten Bestellungen: € {getSumOfOrders()}</h1>
             <div>
-                <button className={"okayButton"} onClick={onPressWeiterZuEinkaufsliste}>Weiter zur Einkaufsliste
-                </button>
+                {/*<button className={"okayButton"} onClick={onPressWeiterZuEinkaufsliste}>Weiter zur Einkaufsliste*/}
+                {/*</button>*/}
             </div>
         </>
     )
