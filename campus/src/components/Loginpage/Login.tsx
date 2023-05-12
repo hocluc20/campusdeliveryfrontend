@@ -14,6 +14,7 @@ interface LoginProps {
 
 
 const Login = ({currentuser, setcurrentuser}:LoginProps) => {
+    // console.log(currentuser);
 
 
     const handleSumit=(e:FormEvent<HTMLFormElement>) =>{
@@ -53,6 +54,8 @@ const Login = ({currentuser, setcurrentuser}:LoginProps) => {
     }
 
     return (
+
+
         <div className="wrapper">
 
             <div className="text-center mt-4 name">Anmeldung</div>
@@ -63,7 +66,7 @@ const Login = ({currentuser, setcurrentuser}:LoginProps) => {
                 </div>
                 <div className="form-field d-flex align-items-center">
                     <label className="fas fa-key" htmlFor="tfPassword"></label>
-                    <input type="text" id="password" placeholder={"Password"}/>
+                    <input type="password" id="password" placeholder={"Password"}/>
                 </div>
 
                 <Link to={"/homepage"} className="text-center fs-6">

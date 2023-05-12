@@ -66,14 +66,8 @@ const Registration = () => {
                 <Link to={"/login"} className="text-center fs-6">
                     <button type="submit" className="btn mt-3">Registrieren</button>
                 </Link>
-
-
             </form>
-
-
         <Outlet/>
-
-
         </div>
     );
 };
