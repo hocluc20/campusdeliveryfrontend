@@ -1,33 +1,66 @@
-import React, {FormEvent} from 'react';
+import React, {FormEvent, useState} from 'react';
 import {INewDelivery} from "../../common/models/INewDelivery";
 import {IUserReplyLogin} from "../../common/models/IUserReplyLogin";
+import {fireChangeForInputTimeIfValid} from "@testing-library/user-event/dist/keyboard/shared";
+import axios from "axios";
+import {mock_data_shops} from "../../common/mock_data_shop";
+import {IShop} from "../../common/models/IShop";
+
 interface DeliveryAddingProps{
     newDelivery: INewDelivery
     currentUser: IUserReplyLogin
     addNewDelivery: (newDelivery:INewDelivery) => void
 }
 
-const DeliveryAdding:React.FC<DeliveryAddingProps> = ({addNewDelivery, currentUser}) => {
+// const getShops = () =>{
+//     axios.get("");
+// }
 
-    const submitNewDelivery = (e:FormEvent<HTMLFormElement>) => {
-        const newDelivery:INewDelivery = {
-            userID : currentUser.id,
-            shop:  e.currentTarget.shop,
-            deliveryTime: e.currentTarget.deliveryTime
-        }
-        console.log("newDelivery");
-        console.log(newDelivery);
+const DeliveryAdding:React.FC<DeliveryAddingProps> = ({addNewDelivery, currentUser}) => {
+     const [shopList, setShopList] = useState<IShop[]>(mock_data_shops/*getShops()*/);
+
+    // const submitNewDelivery = (e:FormEvent<HTMLFormElement>) => {
+    //     e.preventDefault();
+    //
+    //     const newDelivery:INewDelivery = {
+    //         userID : currentUser.id,
+    //         shop:  e.currentTarget.shopLabel.value,
+    //         deliveryTime: e.currentTarget.deliveryTime.value
+    //     };
+    //     console.log("newDelivery");
+    //     console.log(newDelivery);
+    //     addNewDelivery(newDelivery);
+    // }
+
+    const submitNewDelivery = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        const newDelivery: INewDelivery = {
+            userID: currentUser.id,
+            shop: e.currentTarget.shopLabel.value,
+            deliveryTime: e.currentTarget.deliveryTime.value
+        };
+
+        console.log("newDelivery", newDelivery);
         addNewDelivery(newDelivery);
-    }
+    };
+
+
+
+
+
     return (
         <div>
             <form onSubmit={e => submitNewDelivery(e)}>
                 <label>Geschäft</label>
-                <select id={"shopLabelId"} name={"shopLabel"} defaultValue={"Billa"} >z.B. Billa</select>
+                <select id={"shopLabelId"} name={"shopLabel"}>
+                    {shopList.map((shop) => (
+                        <option key={shop.id} value={shop.name}>{shop.name}</option>
+                    ))}
+                    </select>
 
                 <label>Abholzeit</label>
-                <select defaultValue={"12:45:00"}>z.B. Billa</select>
-
+                <input name={"deliveryTime"}   type={"time"}/>
 
                 <button type={"submit"} name={"submitNewDeliveryButton"} >Submit</button>
             </form>

@@ -10,6 +10,8 @@ import Homepage from "./components/Homepage/Homepage";
 import {IUserReplyLogin} from "./common/models/IUserReplyLogin";
 import {useState} from "react";
 import Order from "./components/lukas/Order";
+import {CurrentUserContext, ICurrentUserContextValue} from '../src/common/contexts/ICurrentUserContextValue';
+
 
 
 function App() {
@@ -17,26 +19,32 @@ function App() {
     const [currentuser,setCurrentuser] = useState<IUserReplyLogin>({
         id:1,
         username:"seli",
-        email:"sadf",
-        userpassword:"sadf",
-        firstname:"asdf",
-        lastname:"sdf",
-        numberOfDeliveries:1,
+        email:"edesec20@htl-kaindorf.at",
+        userpassword:"pauliii",
+        firstname:"selina",
+        lastname:"edelsbrunner",
+        numberOfDeliveries:5,
         klasse:"chif20",
     });
 
     return (
     <div className="App">
+        <CurrentUserContext.Provider value={{currentUser: currentuser}}>
+
 
         <BrowserRouter>
             <Routes>
                 <Route path={"/"} element={<Login currentuser={currentuser} setcurrentuser={setCurrentuser}/>}/>
                 <Route path={"/registration"} element={<Registration/>}/>
                 <Route path={"/login"} element={<Login currentuser={currentuser} setcurrentuser={setCurrentuser}/>}/>
-                <Route path={"/homepage"} element={<Homepage currentUser={currentuser}/>}/>
-                <Route path={"/ownerpage"} element={<Order/>}/>
+                <Route path={"/homepage"} element={<Homepage/>}/>
+                <Route path={"/ownerpage"} element={<Order />}/>
             </Routes>
         </BrowserRouter>
+
+        </CurrentUserContext.Provider>
+
+
     </div>
   );
 }
