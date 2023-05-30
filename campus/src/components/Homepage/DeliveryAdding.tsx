@@ -9,17 +9,17 @@ import {CurrentUserContext, ICurrentUserContextValue} from "../../common/context
 import "../lukas/order.css";
 
 
-interface DeliveryAddingProps{
+interface DeliveryAddingProps {
     newDelivery: INewDelivery
-    addNewDelivery: (newDelivery:INewDelivery) => void
+    addNewDelivery: (newDelivery: INewDelivery) => void
 }
 
 // const getShops = () =>{
 //     axios.get("");
 // }
 
-const DeliveryAdding:React.FC<DeliveryAddingProps> = ({addNewDelivery}) => {
-     const [shopList, setShopList] = useState<IShop[]>(mock_data_shops/*getShops()*/);
+const DeliveryAdding: React.FC<DeliveryAddingProps> = ({addNewDelivery}) => {
+    const [shopList, setShopList] = useState<IShop[]>(mock_data_shops/*getShops()*/);
     const currentUser: ICurrentUserContextValue = useContext(CurrentUserContext);
 
 
@@ -50,22 +50,26 @@ const DeliveryAdding:React.FC<DeliveryAddingProps> = ({addNewDelivery}) => {
     };
 
 
-
-
     return (
-        <div>
-            <form onSubmit={e => submitNewDelivery(e)}>
-                <label>Geschäft</label>
-                <select id={"shopLabelId"} name={"shopLabel"}>
-                    {shopList.map((shop) => (
-                        <option key={shop.id} value={shop.name}>{shop.name}</option>
-                    ))}
+        <>
+            <div>
+                <form onSubmit={e => submitNewDelivery(e)}>
+                    <label className="tabbed-label">Geschäft:    </label>
+                    <select id={"shopLabelId"} name={"shopLabel"}>
+                        {shopList.map((shop) => (
+                            <option key={shop.id} value={shop.name}>{shop.name}</option>
+                        ))}
                     </select>
-                <label>Abholzeit</label>
-                <input name={"deliveryTime"}   type={"time"}/>
-                <button type={"submit"} name={"submitNewDeliveryButton"} className={"slideButton"}>Submit</button>
-            </form>
-        </div>
+                    <label className="tabbed-label">    Abholzeit:    </label>
+                    <input name={"deliveryTime"} type={"time"}/>
+                    <label className="tabbed-label">    </label>
+                    <button type={"submit"} name={"submitNewDeliveryButton"} className={"slideButton"}>Submit
+                    </button>
+                    <br></br>
+                    <br></br>
+                </form>
+            </div>
+        </>
     );
 };
 

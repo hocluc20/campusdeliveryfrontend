@@ -154,10 +154,8 @@ header{
 
 
 .divTable{
-    /*text-align: center;*/
-    /*width: 100%;*/
     display: flex;
-    justifyContent: center
+    justify-content: center;
 }
 
 .break {
@@ -173,4 +171,8 @@ header{
 
 #container::-webkit-scrollbar {
     width: 0;
+}
+
+.tabbed-label {
+    white-space: pre-wrap;
 }
