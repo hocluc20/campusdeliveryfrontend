@@ -11,6 +11,7 @@ import {IUserReplyLogin} from "./common/models/IUserReplyLogin";
 import {useState} from "react";
 import Order from "./components/lukas/Order";
 import {CurrentUserContext, ICurrentUserContextValue} from '../src/common/contexts/ICurrentUserContextValue';
+import Bestellpage from "./components/Bestellpage/Bestellpage";
 
 
 
@@ -42,6 +43,7 @@ function App() {
                 <Route path={"/login"} element={<Login/>}/>
                 <Route path={"/homepage"} element={<Homepage/>}/>
                 <Route path={"/ownerpage"} element={<Order />}/>
+                <Route path={"/bestellpage"} element={<Bestellpage/>}/>
             </Routes>
         </BrowserRouter>
 

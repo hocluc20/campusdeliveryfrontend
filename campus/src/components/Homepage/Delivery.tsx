@@ -3,6 +3,7 @@ import {IDelivery} from "../../common/models/IDelivery";
 
 interface DeliveryProps {
     delivery: IDelivery
+
 }
 
 const Delivery: React.FC<DeliveryProps> = ({delivery}) => {
