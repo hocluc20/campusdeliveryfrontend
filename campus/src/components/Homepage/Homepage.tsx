@@ -10,7 +10,7 @@ import "../lukas/order.css"
 import axios from "axios";
 import {mock_delivery} from "../../common/mock_data_orderings";
 import {CurrentUserContext, ICurrentUserContextValue} from "../../common/contexts/ICurrentUserContextValue";
-import logo from "../lukas/image-removebg-preview.png";
+// import logo from "../lukas/image-removebg-preview.png";
 
 interface HomepageProps {
 }
@@ -80,7 +80,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                 <div className={"orders"}>
                     <header>
                         <div style={{display: 'flex', alignItems: 'center'}}>
-                            <img src={logo} alt="logo" style={{height: 100, marginTop: 15, marginLeft: 15}}/>
+                            {/*<img src={logo} alt="logo" style={{height: 100, marginTop: 15, marginLeft: 15}}/>*/}
                             <div style={{flex: 1, textAlign: 'center'}}>
                                 <div style={{
                                     display: 'flex',
