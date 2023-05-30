@@ -13,6 +13,10 @@ export const mock_data_shops: IShop[] = [
         id: 3,
         name: "Hofer"
     },
+    {
+        id: 4,
+        name: "McDonalds"
+    },
 ]
 
 

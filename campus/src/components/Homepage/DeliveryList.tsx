@@ -14,7 +14,7 @@ const DeliveryList: React.FC<DeliveryListProps> = ({deliveries}) => {
         <>
             <h1>Bisherige Aufträge</h1>
             <div className={"divTable"}>
-                <table style={{textAlign: "center"}}>
+                <table className="tableShops">
                     <thead>
                     </thead>
                     <tbody>
