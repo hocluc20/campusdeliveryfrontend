@@ -5,7 +5,7 @@ import {IOrderings} from "../../common/models/IOrderings";
 import {mock_oderings, mock_user} from "../../common/mock_data_orderings";
 import {IDelivery} from "../../common/models/IDelivery";
 import LoggedUserField from "../basicComponents/LoggedUserField";
-// import logo from '../lukas/image-removebg-preview.png';
+import logo from '../lukas/image-removebg-preview.png';
 import {IUserReplyLogin} from "../../common/models/IUserReplyLogin";
 import {CurrentUserContext, ICurrentUserContextValue} from "../../common/contexts/ICurrentUserContextValue";
 
@@ -23,6 +23,14 @@ const OrderList: React.FC = () => {
     const [orders, setOrders] = useState<IOrderings[]>([]);
     const currentUser: ICurrentUserContextValue = useContext(CurrentUserContext);
     let id = 1;
+    let show = 0;
+
+    const [showAccepted, setShowAccepted] = useState(false);
+
+    const onPressWeiterZuEinkaufsliste = () => {
+        setShowAccepted(!showAccepted);
+    };
+
     useEffect(() => {
         getTodo('https://02c35947-d116-48f4-92a3-2e08f7fb570a.mock.pstmn.io/getd').then((data) => {
             setOrders(data);
@@ -39,10 +47,6 @@ const OrderList: React.FC = () => {
         return current;
     }
 
-    const onPressWeiterZuEinkaufsliste = () => {
-        updateServerWithUpdatedOrderings();
-        //</ComponentEinkaufsListe orders={orders}>
-    }
 
     const handleAccept = (orderId: number) => {
         const currentOrders = [...orders];
@@ -80,9 +84,29 @@ const OrderList: React.FC = () => {
         }
     };
 
-    const updateServerWithUpdatedOrderings = () => {
+    const updateServerWithUpdatedOrderings = async () => {
+        try {
+            for (let i = 0; i < orders.length; i++) {
+                const order = orders[i];
+                const response = await fetch(`https://dein-server-url.de/orders/${order.id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(order),
+                });
 
-    }
+                if (response.ok) {
+                    console.log(`Bestellung mit der ID ${order.id} erfolgreich aktualisiert`);
+                } else {
+                    console.log(`Fehler beim Aktualisieren der Bestellung mit der ID ${order.id}`);
+                }
+            }
+        } catch (error) {
+            console.error('Fehler:', error);
+        }
+    };
+
 
     const scrollHoriR = () => {
         const container = document.getElementById("container");
@@ -138,7 +162,7 @@ const OrderList: React.FC = () => {
                 <div className={"orders"}>
                     <header>
                         <div style={{display: 'flex', alignItems: 'center'}}>
-                            <img src={ ''} alt="Logo" style={{height: 100, marginTop: 15, marginLeft: 15}}/>
+                            <img src={logo} alt="logo" style={{height: 100, marginTop: 15, marginLeft: 15}}/>
                             <div style={{flex: 1, textAlign: 'center'}}>
                                 <div style={{
                                     display: 'flex',
@@ -165,7 +189,7 @@ const OrderList: React.FC = () => {
                     }}>
 
                         {orders.map((order) => {
-                                if (order.currentStatus === "declined") {
+                                if ((order.currentStatus === "declined" && !showAccepted)) {
                                     return (
                                         <li className="listItemDeclined" key={order.id}
                                             style={{
@@ -206,7 +230,7 @@ const OrderList: React.FC = () => {
                                             </div>
                                         </li>
                                     )
-                                } else if (order.currentStatus === "accepted") {
+                                } else if (((order.currentStatus === "accepted") && showAccepted) || (order.currentStatus === "accepted" && !showAccepted)) {
                                     return (
                                         <li style={{
                                             margin: 20,
@@ -245,7 +269,7 @@ const OrderList: React.FC = () => {
                                             </div>
                                         </li>
                                     )
-                                } else {
+                                } else if ((order.currentStatus === "waiting" && !showAccepted)){
                                     return (
                                         <li className="listItemWaiting" key={order.id} style={{
                                             margin: 20,
@@ -294,14 +318,13 @@ const OrderList: React.FC = () => {
             <button type="button" className={"slideButton"} onClick={scrollHoriL}>links scrollen</button>
             <button type="button" className={"slideButton"} onClick={scrollHoriR}>rechts scrollen</button>
             <button type="button" className={"slideButton"} onClick={scrollTotalRight}>ende rechts</button>
-            <h1 className={"sumOfOrders"}>Summer aller bestätigten Bestellungen: € {getSumOfOrders()}</h1>
+            <h1 className={"sumOfOrders"}>Summe aller bestätigten Bestellungen: € {getSumOfOrders()}</h1>
             <div>
-                {/*<button className={"okayButton"} onClick={onPressWeiterZuEinkaufsliste}>Weiter zur Einkaufsliste*/}
-                {/*</button>*/}
+                <button className={"okayButton"} onClick={onPressWeiterZuEinkaufsliste}>Akzeptierte/Alle Einkäufe anzeigen
+                </button>
             </div>
         </>
-    )
-        ;
+    );
 };
 
 export default OrderList;
