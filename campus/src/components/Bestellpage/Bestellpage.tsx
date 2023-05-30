@@ -1,11 +1,25 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Delivery from "../Homepage/Delivery";
 import DeliverInformation from "./DeliverInformation";
+import {CurrentUserContext, ICurrentUserContextValue} from "../../common/contexts/ICurrentUserContextValue";
+import {IDelivery} from "../../common/models/IDelivery";
+import {IUserReplyLogin} from "../../common/models/IUserReplyLogin";
 
-const Bestellpage = () => {
+interface BestellpageProps{
+    selectedDelivery: IDelivery
+    selectedUser: IUserReplyLogin
+}
+
+const Bestellpage:React.FC<BestellpageProps> = ({selectedDelivery, selectedUser}) => {
+    const currentUser: ICurrentUserContextValue = useContext(CurrentUserContext);
+    const orderTime = selectedDelivery.deliveryTime; //TOdo real time
+
     return (
         <div>
-            <h1>Bestellung</h1>
+            <div>{selectedUser.firstname} {selectedUser.lastname}</div>
+            <div>Zielort: {selectedDelivery.shop}</div>
+            <div>Bestellung bis: {selectedDelivery.deliveryTime}</div>
+            <div>Abholzeit um: {selectedDelivery.deliveryTime}</div>
 
         </div>
 
