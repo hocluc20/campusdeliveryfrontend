@@ -5,7 +5,7 @@ import {IOrderings} from "../../common/models/IOrderings";
 import {mock_oderings, mock_user} from "../../common/mock_data_orderings";
 import {IDelivery} from "../../common/models/IDelivery";
 import LoggedUserField from "../basicComponents/LoggedUserField";
-import logo from '../lukas/image-removebg-preview.png';
+ // import logo from '../lukas/image-removebg-preview.png';
 import {IUserReplyLogin} from "../../common/models/IUserReplyLogin";
 import {CurrentUserContext, ICurrentUserContextValue} from "../../common/contexts/ICurrentUserContextValue";
 
@@ -162,7 +162,7 @@ const OrderList: React.FC = () => {
                 <div className={"orders"}>
                     <header>
                         <div style={{display: 'flex', alignItems: 'center'}}>
-                            <img src={logo} alt="logo" style={{height: 100, marginTop: 15, marginLeft: 15}}/>
+                            {/*<img src={logo} alt="logo" style={{height: 100, marginTop: 15, marginLeft: 15}}/>*/}
                             <div style={{flex: 1, textAlign: 'center'}}>
                                 <div style={{
                                     display: 'flex',
