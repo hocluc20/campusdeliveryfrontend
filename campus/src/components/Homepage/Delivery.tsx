@@ -4,6 +4,7 @@ import { Route, useNavigate } from "react-router-dom";
 
 interface DeliveryProps {
     delivery: IDelivery
+
 }
 
 const Delivery: React.FC<DeliveryProps> = ({delivery}) => {
