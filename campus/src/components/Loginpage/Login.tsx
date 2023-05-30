@@ -1,5 +1,6 @@
 import React, {FormEvent, useContext, useState} from 'react';
 import {Link, Outlet} from "react-router-dom";
+import {createBrowserHistory} from "history";
 import Registration from "./Registration";
 import {IUserLogin} from "../../common/models/IUserLogin";
 import axios from "axios";
@@ -10,6 +11,7 @@ import {CurrentUserContext, ICurrentUserContextValue} from "../../common/context
 
 const Login = () => {
     const contextUser: ICurrentUserContextValue = useContext(CurrentUserContext);
+    const history = createBrowserHistory();
     // const [currentUser, setCurrentUser] = contextUser;
     // console.log(contextUser);
 
@@ -24,7 +26,7 @@ const Login = () => {
 
         console.log(JSON.stringify(userLogin));
 
-        axios.post("/user/login",JSON.stringify(userLogin))
+        axios.post("localhost:3000/user/login",JSON.stringify(userLogin))
             .then(response =>{
                 const userLoginBack:IUserReplyLogin = {
                     id:response.data.id,
@@ -42,11 +44,15 @@ const Login = () => {
                 }
 
                 console.log(JSON.stringify(userLoginBack));
+
+                if(response.status == 200){
+                    history.push('/homepage');
+                }
             })
             .catch(error => {
                 if(error == 406){
                     console.log("User does not exist")
-                }else if(error == 405){
+                }else if(error == 405) {
                     console.log("password is incorrect")
                 }
             });
@@ -68,9 +74,13 @@ const Login = () => {
                     <input type="password" id="password" placeholder={"Password"}/>
                 </div>
 
-                <Link to={"/homepage"} className="text-center fs-6">
+                {/*<Link to={"/homepage"} className="text-center fs-6">*/}
+                {/*    <button type="submit" className="btn mt-3">Anmelden</button>*/}
+                {/*</Link>*/}
+
+                <div className="text-center fs-6">
                     <button type="submit" className="btn mt-3">Anmelden</button>
-                </Link>
+                </div>
 
 
                 <Link to={"/registration"}>Registrieren</Link>
