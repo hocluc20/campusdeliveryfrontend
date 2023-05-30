@@ -1,6 +1,7 @@
 import React from 'react';
 import {IDelivery} from "../../common/models/IDelivery";
 import { Route, useNavigate } from "react-router-dom";
+import Bestellpage from "../Bestellpage/Bestellpage";
 
 interface DeliveryProps {
     delivery: IDelivery
