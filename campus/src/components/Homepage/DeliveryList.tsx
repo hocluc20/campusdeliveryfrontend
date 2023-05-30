@@ -1,32 +1,35 @@
 import React from 'react';
 import {IDelivery} from "../../common/models/IDelivery";
 import Delivery from "./Delivery";
+import "../lukas/order.css";
 
-interface DeliveryListProps{
+
+interface DeliveryListProps {
     deliveries: IDelivery[]
 }
 
-const DeliveryList:React.FC<DeliveryListProps> = ({deliveries}) => {
+const DeliveryList: React.FC<DeliveryListProps> = ({deliveries}) => {
 
     return (
-        <div>
+        <>
             <h1>Bisherige Aufträge</h1>
-            <table>
-                <thead>
-
-                </thead>
-               <tbody>
-               {
-                   deliveries.map(d  =>{
-                       return(
-                           <Delivery key={d.id} delivery={d}/>
-                        )
-
-                    })
-               }
-               </tbody>
-            </table>
-        </div>
+            <div className={"divTable"}>
+                <table style={{textAlign: "center"}}>
+                    <thead>
+                    </thead>
+                    <tbody>
+                    <br></br>
+                    {
+                        deliveries.map(d => {
+                            return (
+                                <Delivery key={d.id} delivery={d}/>
+                            )
+                        })
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </>
     );
 };
 

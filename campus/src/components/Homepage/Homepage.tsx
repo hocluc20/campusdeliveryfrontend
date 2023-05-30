@@ -10,40 +10,27 @@ import "../lukas/order.css"
 import axios from "axios";
 import {mock_delivery} from "../../common/mock_data_orderings";
 import {CurrentUserContext, ICurrentUserContextValue} from "../../common/contexts/ICurrentUserContextValue";
-import {Simulate} from "react-dom/test-utils";
-import error = Simulate.error;
+import logo from "../lukas/image-removebg-preview.png";
 
-interface HomepageProps{
+interface HomepageProps {
 }
 
-const Homepage:React.FC<HomepageProps>  = () => {
+const Homepage: React.FC<HomepageProps> = () => {
     //Delivery array
-
-    //fetch to get all deliveries
-    // const getDeliveries = async () => {
-    //     let response = await axios.get("localhost:3001/delivery/today").then(response => console.log(response.data+"erer"));
-    //     //setDeliveries(response.data as IDelivery[])).catch(error => console.log("Errorrrrrrrrrrrrrrrrrrrrrrrr"+error
-    //     return response;
-    // };
-
-    const getDeliveries = ():IDelivery[] | null => {
-        fetch("http://localhost:3001/delivery/today").then(response => response.json()).then(data => {
-            const deliv: IDelivery[] = data as IDelivery[];
-
-        });
-        return null;
-    };
-
     //const [deliveries, setDeliveries] = useState<IDelivery[]>([]); //Todo initial state
     const [deliveries, setDeliveries] = useState<IDelivery[]>(mock_delivery); //Todo initial state
     const currentUser: ICurrentUserContextValue = useContext(CurrentUserContext);
 
-    //
-    // useEffect(() => {
-    //     getDeliveries();
-    //     //axios.get("localhost:3001/delivery/today").then(response => setDeliveries(response.data));
-    //     console.log("Testttt that it worked");
-    // },deliveries);
+    //fetch to get all deliveries
+    const getDeliveries = () => {
+        axios.get("https://9fab774d-1c6e-4e22-babd-2c032020d2b4.mock.pstmn.io/delivery/today").then(response => setDeliveries(response.data));
+
+    };
+    useEffect(() => {
+        //getDeliveries();
+        //axios.get("https://88442144-d961-4c61-858b-d310943edef8.mock.pstmn.io/delivery/today").then(response => setDeliveries(response.data));
+        console.log("Test that it worked");
+    }, deliveries);
 
 
     //add new delivery to deliveries
@@ -62,7 +49,6 @@ const Homepage:React.FC<HomepageProps>  = () => {
             deliveryDate: JSON.stringify(Date.now()),
             deliveryTime: newDelivery.deliveryTime
         }
-        // @ts-ignore
         setDeliveries([...deliveries, del]);
 
         //Todo interace withoutPassword
@@ -78,7 +64,7 @@ const Homepage:React.FC<HomepageProps>  = () => {
         // }
     }
 
-    const postDelivery = async (newDeliveryToPost: INewDelivery) =>{
+    const postDelivery = async (newDeliveryToPost: INewDelivery) => {
         const res = await axios.post('/delivery/new', {
             user: newDeliveryToPost.userID,
             shop: newDeliveryToPost.shop,
@@ -89,12 +75,41 @@ const Homepage:React.FC<HomepageProps>  = () => {
 
 
     return (
-        <div>
-            <div className={"userName"}><LoggedUserField/></div>
-            <DeliveryAdding newDelivery={mock_newDelivery} addNewDelivery={(newDelivery) =>addNewDelivery(newDelivery)}/>
-            {/*<DeliveryAdding newDelivery={mock_newDelivery} currentUser={currentUser} addNewDelivery={addNewDelivery}/>*/}
-            <DeliveryList deliveries={deliveries}></DeliveryList>
-        </div>
+        <>
+            <div id="container">
+                <div className={"orders"}>
+                    <header>
+                        <div style={{display: 'flex', alignItems: 'center'}}>
+                            <img src={logo} alt="logo" style={{height: 100, marginTop: 15, marginLeft: 15}}/>
+                            <div style={{flex: 1, textAlign: 'center'}}>
+                                <div style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    marginRight: 200
+                                }}>
+                                    <h1 style={{marginBottom: 20}}>Homepage</h1>
+                                </div>
+                            </div>
+                            <div style={{textAlign: 'right', marginRight: 300}} className="userName">
+                                <LoggedUserField/>
+                            </div>
+                        </div>
+                    </header>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <DeliveryAdding newDelivery={mock_newDelivery}
+                                    addNewDelivery={(newDelivery) => addNewDelivery(newDelivery)}/>
+                    {/*<DeliveryAdding newDelivery={mock_newDelivery} currentUser={currentUser} addNewDelivery={addNewDelivery}/>*/}
+                    <DeliveryList deliveries={deliveries}/>
+                </div>
+            </div>
+        </>
     );
 };
 
