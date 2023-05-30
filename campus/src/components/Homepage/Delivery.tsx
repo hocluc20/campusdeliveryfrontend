@@ -11,7 +11,7 @@ const Delivery: React.FC<DeliveryProps> = ({delivery}) => {
 
     const navigate = useNavigate();
     const handleOnCLick = () => {
-        navigate('/login');
+        navigate('/bestellpage');
     }
     return (
        <tr>
