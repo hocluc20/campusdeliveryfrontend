@@ -168,6 +168,10 @@ header{
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
+.tableShops{
+    /*textAlign: "center";*/
+    /*border: 2px solid #FFB043;*/
+}
 
 #container::-webkit-scrollbar {
     width: 0;
@@ -175,4 +179,57 @@ header{
 
 .tabbed-label {
     white-space: pre-wrap;
+}
+
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cards .gold {
+    background-color: #FFB043;
+    color: #2C2C2C;
+}
+
+.cards .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 100px;
+    width: 350px;
+    border-radius: 10px;
+    color: #2C2C2C;
+    cursor: pointer;
+    transition: 400ms;
+}
+
+.cards .card p.tip {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.cards .card p.second-text {
+    font-size: 1em;
+}
+
+.cards .card:hover {
+    transform: scale(1.1, 1.1);
+}
+
+.cards:hover > .card:not(:hover) {
+    filter: blur(10px);
+    transform: scale(0.9, 0.9);
+}
+
+input {
+    background-color: #2C2C2C;
+    color: #FFB043;
+}
+select {
+    background-color: #2C2C2C;
+    color: #FFB043;
 }
