@@ -6,6 +6,8 @@ import axios from "axios";
 import {mock_data_shops} from "../../common/mock_data_shop";
 import {IShop} from "../../common/models/IShop";
 import {CurrentUserContext, ICurrentUserContextValue} from "../../common/contexts/ICurrentUserContextValue";
+import "../lukas/order.css";
+
 
 interface DeliveryAddingProps{
     newDelivery: INewDelivery
@@ -50,7 +52,6 @@ const DeliveryAdding:React.FC<DeliveryAddingProps> = ({addNewDelivery}) => {
 
 
 
-
     return (
         <div>
             <form onSubmit={e => submitNewDelivery(e)}>
@@ -60,13 +61,10 @@ const DeliveryAdding:React.FC<DeliveryAddingProps> = ({addNewDelivery}) => {
                         <option key={shop.id} value={shop.name}>{shop.name}</option>
                     ))}
                     </select>
-
                 <label>Abholzeit</label>
                 <input name={"deliveryTime"}   type={"time"}/>
-
-                <button type={"submit"} name={"submitNewDeliveryButton"} >Submit</button>
+                <button type={"submit"} name={"submitNewDeliveryButton"} className={"slideButton"}>Submit</button>
             </form>
-
         </div>
     );
 };

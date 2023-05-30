@@ -326,5 +326,4 @@ const OrderList: React.FC = () => {
         </>
     );
 };
-
 export default OrderList;

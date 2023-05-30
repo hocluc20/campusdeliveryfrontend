@@ -1,6 +1,8 @@
 import React from 'react';
 import {IDelivery} from "../../common/models/IDelivery";
 import Delivery from "./Delivery";
+import "../lukas/order.css";
+
 
 interface DeliveryListProps{
     deliveries: IDelivery[]
@@ -9,11 +11,11 @@ interface DeliveryListProps{
 const DeliveryList:React.FC<DeliveryListProps> = ({deliveries}) => {
 
     return (
-        <div>
-            <h1>Bisherige Aufträge</h1>
-            <table>
+        <>
+        <h1>Bisherige Aufträge</h1>
+    <div className={"divTable"}>
+            <table style={{textAlign:"center"}}>
                 <thead>
-
                 </thead>
                <tbody>
                {
@@ -21,12 +23,12 @@ const DeliveryList:React.FC<DeliveryListProps> = ({deliveries}) => {
                        return(
                            <Delivery key={d.id} delivery={d}/>
                         )
-
                     })
                }
                </tbody>
             </table>
         </div>
+        </>
     );
 };
 
