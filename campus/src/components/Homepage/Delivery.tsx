@@ -1,7 +1,7 @@
 import React from 'react';
 import {IDelivery} from "../../common/models/IDelivery";
 import { Route, useNavigate } from "react-router-dom";
-import Bestellpage from "../Bestellpage/Bestellpage";
+
 
 interface DeliveryProps {
     delivery: IDelivery
@@ -14,6 +14,11 @@ const Delivery: React.FC<DeliveryProps> = ({delivery}) => {
     const handleOnCLick = () => {
         navigate('/ownerpage');
     }
+    // const getUser = (): IUserGetUserID => {
+    //     let l: IUserGetUserID | undefined;
+    //     axios.get("http://localhost:3001/user/getUser?user="+delivery.userID).then(response => l = response.data as IUserGetUserID);
+    //     ;
+    // }
     return (
         <>
             <br />

@@ -5,13 +5,13 @@ import './App.css';
 import Login from "./components/Loginpage/Login";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Registration from "./components/Loginpage/Registration";
-import Delivery from "./components/Homepage/Delivery";
 import Homepage from "./components/Homepage/Homepage";
 import {IUserReplyLogin} from "./common/models/IUserReplyLogin";
 import {useState} from "react";
 import Order from "./components/lukas/Order";
 import {CurrentUserContext, ICurrentUserContextValue} from '../src/common/contexts/ICurrentUserContextValue';
 import Bestellpage from "./components/Bestellpage/Bestellpage";
+import {mock_delivery, mock_user} from "./common/mock_data_orderings";
 
 
 
@@ -43,7 +43,7 @@ function App() {
                 <Route path={"/login"} element={<Login/>}/>
                 <Route path={"/homepage"} element={<Homepage/>}/>
                 <Route path={"/ownerpage"} element={<Order />}/>
-                <Route path={"/bestellpage"} element={<Order/>}/>
+                <Route path={"/bestellpage"} element={<Bestellpage selectedDelivery={mock_delivery[0]} />}/>
             </Routes>
         </BrowserRouter>
 
