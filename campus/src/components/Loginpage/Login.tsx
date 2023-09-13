@@ -4,7 +4,7 @@ import {createBrowserHistory} from "history";
 import Registration from "./Registration";
 import {IUserLogin} from "../../common/models/IUserLogin";
 import axios from "axios";
-import {IUserReplyLogin} from "../../common/models/IUserReplyLogin";
+import {IUserComplete} from "../../common/models/IUserComplete";
 import "./loginCSS.css"
 import {CurrentUserContext, ICurrentUserContextValue} from "../../common/contexts/ICurrentUserContextValue";
 
@@ -26,9 +26,9 @@ const Login = () => {
 
         console.log(JSON.stringify(userLogin));
 
-        axios.post("localhost:3000/user/login",JSON.stringify(userLogin))
+        axios.post("localhost:3001/user/login",JSON.stringify(userLogin))
             .then(response =>{
-                const userLoginBack:IUserReplyLogin = {
+                const userLoginBack:IUserComplete = {
                     id:response.data.id,
                     username:response.data.username,
                     email:response.data.email,

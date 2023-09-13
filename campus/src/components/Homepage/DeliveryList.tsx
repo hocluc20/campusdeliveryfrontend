@@ -10,6 +10,7 @@ interface DeliveryListProps {
 
 const DeliveryList: React.FC<DeliveryListProps> = ({deliveries}) => {
 
+
     return (
         <>
             <h1>Bisherige Aufträge</h1>
@@ -18,7 +19,7 @@ const DeliveryList: React.FC<DeliveryListProps> = ({deliveries}) => {
                     <thead>
                     </thead>
                     <tbody>
-                    <br></br>
+                    {/*<br></br>*/}
                     {
                         deliveries.map(d => {
                             return (

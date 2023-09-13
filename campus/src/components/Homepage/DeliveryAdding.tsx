@@ -1,6 +1,6 @@
-import React, {FormEvent, useContext, useState} from 'react';
+import React, {FormEvent, useContext, useEffect, useState} from 'react';
 import {INewDelivery} from "../../common/models/INewDelivery";
-import {IUserReplyLogin} from "../../common/models/IUserReplyLogin";
+import {IUserComplete} from "../../common/models/IUserComplete";
 import {fireChangeForInputTimeIfValid} from "@testing-library/user-event/dist/keyboard/shared";
 import axios from "axios";
 import {mock_data_shops} from "../../common/mock_data_shop";
@@ -10,17 +10,23 @@ import "../lukas/order.css";
 
 
 interface DeliveryAddingProps {
-    newDelivery: INewDelivery
     addNewDelivery: (newDelivery: INewDelivery) => void
 }
 
-// const getShops = () =>{
-//     axios.get("");
-// }
 
 const DeliveryAdding: React.FC<DeliveryAddingProps> = ({addNewDelivery}) => {
-    const [shopList, setShopList] = useState<IShop[]>(mock_data_shops/*getShops()*/);
+    const [shopList, setShopList] = useState<IShop[]>([]);
     const currentUser: ICurrentUserContextValue = useContext(CurrentUserContext);
+
+    useEffect(() => {
+        console.log('Component mounted and DOM ready');
+        axios.get("http://localhost:3001/shops/getAll").then(response => {
+        setShopList(response.data)
+        });
+    }, []);
+
+
+
 
 
     // const submitNewDelivery = (e:FormEvent<HTMLFormElement>) => {
@@ -53,6 +59,7 @@ const DeliveryAdding: React.FC<DeliveryAddingProps> = ({addNewDelivery}) => {
     return (
         <>
             <div>
+
                 <form onSubmit={e => submitNewDelivery(e)}>
                     <label className="tabbed-label">Geschäft:    </label>
                     <select id={"shopLabelId"} name={"shopLabel"}>
@@ -63,10 +70,10 @@ const DeliveryAdding: React.FC<DeliveryAddingProps> = ({addNewDelivery}) => {
                     <label className="tabbed-label">    Abholzeit:    </label>
                     <input name={"deliveryTime"} type={"time"}/>
                     <label className="tabbed-label">    </label>
-                    <button type={"submit"} name={"submitNewDeliveryButton"} className={"slideButton"}>Submit
+                    <button type={"submit"}  name={"submitNewDeliveryButton"} className={"slideButton"}>Submit
                     </button>
-                    <br></br>
-                    <br></br>
+                    {/*<br></br>*/}
+                    {/*<br></br>*/}
                 </form>
             </div>
         </>

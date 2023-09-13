@@ -1,7 +1,7 @@
-import {IUserGetUserID} from "./models/IUserGetUserID";
-import {IUserReplyLogin} from "./models/IUserReplyLogin";
+import {IUserGetNamesFromID} from "./models/IUserGetNamesFromID";
+import {IUserComplete} from "./models/IUserComplete";
 
-export const moch_data_user : IUserGetUserID[] = [
+export const moch_data_user : IUserGetNamesFromID[] = [
     {
         username:"emmabauer20",
         firstname:"Emma",
@@ -20,7 +20,7 @@ export const moch_data_user : IUserGetUserID[] = [
 ]
 
 
-export const mock_data_userReply : IUserReplyLogin[] = [
+export const mock_data_userReply : IUserComplete[] = [
     {
         id:1,
         username:"seli",

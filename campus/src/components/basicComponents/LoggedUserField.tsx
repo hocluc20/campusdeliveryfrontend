@@ -1,12 +1,12 @@
 import React, {useContext} from 'react';
 import "./CSSBasicDesigns.css";
-import {IUserGetUserID} from "../../common/models/IUserGetUserID";
+import {IUserGetNamesFromID} from "../../common/models/IUserGetNamesFromID";
 import {IUserLogin} from "../../common/models/IUserLogin";
-import {IUserRegister} from "../../common/models/IUserRegister";
-import {IUserReplyLogin} from "../../common/models/IUserReplyLogin";
+import {IUserRegistrationData} from "../../common/models/IUserRegistrationData";
+import {IUserComplete} from "../../common/models/IUserComplete";
 import {CurrentUserContext, ICurrentUserContextValue} from "../../common/contexts/ICurrentUserContextValue";
 interface LoggedUserField{
-    // user: IUserReplyLogin;
+    // user: IUserComplete;
 }
 
 const LoggedUserField:React.FC<LoggedUserField> = () => {

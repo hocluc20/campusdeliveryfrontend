@@ -1,10 +1,8 @@
-export interface IUserReplyLogin{
-    id:number,
+export interface IUserRegistrationData {
     username:string,
     email:string,
     userpassword:string,
     firstname:string,
     lastname:string,
-    numberOfDeliveries:number,
     klasse:string,
 }

@@ -6,7 +6,7 @@ import {mock_oderings, mock_user} from "../../common/mock_data_orderings";
 import {IDelivery} from "../../common/models/IDelivery";
 import LoggedUserField from "../basicComponents/LoggedUserField";
  // import logo from '../lukas/image-removebg-preview.png';
-import {IUserReplyLogin} from "../../common/models/IUserReplyLogin";
+import {IUserComplete} from "../../common/models/IUserComplete";
 import {CurrentUserContext, ICurrentUserContextValue} from "../../common/contexts/ICurrentUserContextValue";
 
 

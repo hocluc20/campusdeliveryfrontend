@@ -1,6 +1,6 @@
 import React, {FormEvent} from 'react';
 import {Link, Outlet} from "react-router-dom";
-import {IUserRegister} from "../../common/models/IUserRegister";
+import {IUserRegistrationData} from "../../common/models/IUserRegistrationData";
 import axios from "axios";
 import "./loginCSS.css"
 
@@ -12,7 +12,7 @@ const Registration = () => {
         e.preventDefault();
 
 
-        const newUser:IUserRegister = {
+        const newUser:IUserRegistrationData = {
             username:e.currentTarget.username.value,
             email:e.currentTarget.email.value,
             userpassword:e.currentTarget.password.value,

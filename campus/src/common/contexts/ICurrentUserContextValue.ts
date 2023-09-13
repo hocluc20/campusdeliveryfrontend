@@ -1,12 +1,12 @@
-import {IUserReplyLogin} from "../models/IUserReplyLogin";
+import {IUserComplete} from "../models/IUserComplete";
 import {createContext} from "react";
 
 export interface ICurrentUserContextValue{
-    currentUser: IUserReplyLogin
-    setCurrentUser: (currUser:IUserReplyLogin) => void
+    currentUser: IUserComplete
+    setCurrentUser: (currUser:IUserComplete) => void
 }
 
-function setCurrentUser(currUser: IUserReplyLogin) {
+function setCurrentUser(currUser: IUserComplete) {
     console.log("Test");
 }
 

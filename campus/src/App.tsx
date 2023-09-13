@@ -6,7 +6,7 @@ import Login from "./components/Loginpage/Login";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Registration from "./components/Loginpage/Registration";
 import Homepage from "./components/Homepage/Homepage";
-import {IUserReplyLogin} from "./common/models/IUserReplyLogin";
+import {IUserComplete} from "./common/models/IUserComplete";
 import {useState} from "react";
 import Order from "./components/lukas/Order";
 import {CurrentUserContext, ICurrentUserContextValue} from '../src/common/contexts/ICurrentUserContextValue';
@@ -17,7 +17,7 @@ import {mock_delivery, mock_user} from "./common/mock_data_orderings";
 
 function App() {
 
-    let [currentuser,setCurrentuser] = useState<IUserReplyLogin>({    id:1,
+    let [currentuser,setCurrentuser] = useState<IUserComplete>({    id:4,
         username:"seli",
         email:"edesec20@htl-kaindorf.at",
         userpassword:"pauliii",
@@ -26,7 +26,7 @@ function App() {
         numberOfDeliveries:5,
         klasse:"chif20",});
 
-    const setCurrentUser = (cu: IUserReplyLogin) => {
+    const setCurrentUser = (cu: IUserComplete) => {
         currentuser = cu;
     }
 
@@ -43,7 +43,7 @@ function App() {
                 <Route path={"/login"} element={<Login/>}/>
                 <Route path={"/homepage"} element={<Homepage/>}/>
                 <Route path={"/ownerpage"} element={<Order />}/>
-                <Route path={"/bestellpage"} element={<Bestellpage selectedDelivery={mock_delivery[0]} />}/>
+                <Route path={"/bestellpage"} element={<Bestellpage />}/>
             </Routes>
         </BrowserRouter>
 

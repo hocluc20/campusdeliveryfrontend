@@ -1,7 +1,7 @@
 import {IOrderings} from "./models/IOrderings";
 import {IDelivery} from "./models/IDelivery";
 import {INewDelivery} from "./models/INewDelivery";
-import {IUserRegister} from "./models/IUserRegister";
+import {IUserRegistrationData} from "./models/IUserRegistrationData";
 
 export const mock_oderings : IOrderings[] = [
     {
@@ -71,7 +71,7 @@ export const mock_newDelivery : INewDelivery = {
 
 }
 
-export const mock_user: IUserRegister = {
+export const mock_user: IUserRegistrationData = {
     username: "bauemc20",
     email: "bauemc20@htl-kaindorf.at",
     userpassword: "4ade80",
