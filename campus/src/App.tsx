@@ -11,7 +11,7 @@ import {useState} from "react";
 import Order from "./components/lukas/Order";
 import {CurrentUserContext, ICurrentUserContextValue} from '../src/common/contexts/ICurrentUserContextValue';
 import Bestellpage from "./components/Bestellpage/Bestellpage";
-import {mock_delivery, mock_user} from "./common/mock_data_orderings";
+// import {mock_delivery, mock_user} from "./common/mock_data_orderings";
 
 
 
@@ -38,7 +38,7 @@ function App() {
 
         <BrowserRouter>
             <Routes>
-                <Route path={"/"} element={<Login/>}/>
+                <Route path={"/"} element={<Homepage/>}/>
                 <Route path={"/registration"} element={<Registration/>}/>
                 <Route path={"/login"} element={<Login/>}/>
                 <Route path={"/homepage"} element={<Homepage/>}/>
