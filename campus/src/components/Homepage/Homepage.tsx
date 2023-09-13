@@ -75,29 +75,30 @@ const Homepage: React.FC<HomepageProps> = () => {
 
 
     return (
-
+        <>
             <div>
 
-                    {/*<header>*/}
-                        {/*<div >*/}
+                    <header>
+                        <div >
                             {/*<img src={logo} alt="logo" style={{height: 100, marginTop: 15, marginLeft: 15}}/>*/}
-                            {/*<div style={{flex: 1, textAlign: 'center'}}>*/}
-                            {/*    <div style={{*/}
-                            {/*        display: 'flex',*/}
-                            {/*        flexDirection: 'column',*/}
-                            {/*        alignItems: 'center',*/}
-                            {/*        marginRight: 200*/}
-                            {/*    }}>*/}
-                            {/*        <h1 style={{marginBottom: 20}}>Homepage</h1>*/}
-                            {/*    </div>*/}
-                            {/*</div>*/}
-                            {/*<div style={{textAlign: 'right', marginRight: 300}} className="userName">*/}
-                            {/*</div>*/}
+                            <div style={{flex: 1, textAlign: 'center'}}>
+                                <div style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    marginRight: 200
+                                }}>
+                                    <h1 style={{marginBottom: 20}}>Homepage</h1>
+                                </div>
+                            </div>
+                            <div style={{textAlign: 'right', marginRight: 300}} className="userName">
+                            </div>
 
-                        {/*</div>*/}
+
+                        </div>
                         <LoggedUserField/>
 
-                    {/*</header>*/}
+                    </header>
 
 
                     <DeliveryAdding
@@ -105,6 +106,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                     {/*<DeliveryAdding newDelivery={mock_newDelivery} currentUser={currentUser} addNewDelivery={addNewDelivery}/>*/}
                     <DeliveryList deliveries={deliveries}/></div>
 
+    </>
     );
 };
 
