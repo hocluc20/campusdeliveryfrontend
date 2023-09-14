@@ -1,6 +1,5 @@
 import React, {FormEvent, useContext, useState} from 'react';
-import {Link, Outlet} from "react-router-dom";
-import {createBrowserHistory} from "history";
+import {Link, Outlet, useNavigate} from "react-router-dom";
 import Registration from "./Registration";
 import {IUserLogin} from "../../common/models/IUserLogin";
 import axios from "axios";
@@ -11,23 +10,24 @@ import {CurrentUserContext, ICurrentUserContextValue} from "../../common/context
 
 const Login = () => {
     const contextUser: ICurrentUserContextValue = useContext(CurrentUserContext);
-    const history = createBrowserHistory();
     // const [currentUser, setCurrentUser] = contextUser;
     // console.log(contextUser);
 
+    const navigate = useNavigate();
 
     const handleSumit=(e:FormEvent<HTMLFormElement>) =>{
         e.preventDefault();
 
         const userLogin:IUserLogin = {
             username:e.currentTarget.username.value,
-            userpassword:e.currentTarget.password.value
+            userPassword:e.currentTarget.password.value
         }
 
         console.log(JSON.stringify(userLogin));
 
-        axios.post("localhost:3001/user/login",JSON.stringify(userLogin))
+        axios.post("http://localhost:3001/user/login",userLogin)
             .then(response =>{
+
                 const userLoginBack:IUserComplete = {
                     id:response.data.id,
                     username:response.data.username,
@@ -39,20 +39,16 @@ const Login = () => {
                     klasse:response.data.klasse,
                 }
 
-                if (contextUser.setCurrentUser) {
-                    contextUser.setCurrentUser(userLoginBack);
-                }
-
                 console.log(JSON.stringify(userLoginBack));
+                    contextUser.setCurrentUser(userLoginBack);
 
-                if(response.status == 200){
-                    history.push('/homepage');
-                }
+                navigate("/homepage");
+
             })
             .catch(error => {
-                if(error == 406){
+                if(error === 406){
                     console.log("User does not exist")
-                }else if(error == 405) {
+                }else if(error === 405){
                     console.log("password is incorrect")
                 }
             });
@@ -74,13 +70,8 @@ const Login = () => {
                     <input type="password" id="password" placeholder={"Password"}/>
                 </div>
 
-                {/*<Link to={"/homepage"} className="text-center fs-6">*/}
-                {/*    <button type="submit" className="btn mt-3">Anmelden</button>*/}
-                {/*</Link>*/}
-
-                <div className="text-center fs-6">
                     <button type="submit" className="btn mt-3">Anmelden</button>
-                </div>
+
 
 
                 <Link to={"/registration"}>Registrieren</Link>

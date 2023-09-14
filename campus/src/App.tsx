@@ -17,14 +17,14 @@ import Bestellpage from "./components/Bestellpage/Bestellpage";
 
 function App() {
 
-    let [currentuser,setCurrentuser] = useState<IUserComplete>({    id:4,
-        username:"seli",
-        email:"edesec20@htl-kaindorf.at",
-        userpassword:"pauliii",
-        firstname:"selina",
-        lastname:"edelsbrunner",
-        numberOfDeliveries:5,
-        klasse:"chif20",});
+    let [currentuser,setCurrentuser] = useState<IUserComplete>({    id:0,
+        username:"",
+        email:"",
+        userpassword:"",
+        firstname:"",
+        lastname:"",
+        numberOfDeliveries:0,
+        klasse:"",});
 
     const setCurrentUser = (cu: IUserComplete) => {
         currentuser = cu;
